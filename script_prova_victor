@@ -41,13 +41,5 @@ SELECT * FROM pessoa WHERE id = 1600;
 
 SELECT p.id, p.nome, ur.fk_pessoa, ur.id, ur.unidade FROM pessoa p
 INNER JOIN unidade_requisitante ur
-ON p.id = ur.fk_pessoa WHERE p.id = 16;
-
-SELECT p.id, p.nome, ur.fk_pessoa, ur.id, ur.unidade FROM pessoa p
-INNER JOIN unidade_requisitante ur
-ON p.id = ur.fk_pessoa WHERE p.id = 160;
-
-SELECT p.id, p.nome, ur.fk_pessoa, ur.id, ur.unidade FROM pessoa p
-INNER JOIN unidade_requisitante ur
-ON p.id = ur.fk_pessoa WHERE p.id = 1600;
+ON p.id = ur.fk_pessoa WHERE p.id in (16, 160, 1600);
 
