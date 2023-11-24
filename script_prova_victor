@@ -1,0 +1,53 @@
+CREATE database prova_victor;
+
+use prova_victor;
+
+CREATE TABLE pessoa (
+  id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  nome varchar(4000) NOT NULL
+);
+
+CREATE TABLE unidade_requisitante(
+	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    unidade VARCHAR(500) NOT NULL UNIQUE
+);
+    
+ALTER TABLE unidade_requisitante ADD COLUMN fk_pessoa INT(11);
+
+ALTER TABLE unidade_requisitante ADD CONSTRAINT id_fk_pessoa FOREIGN KEY(id) REFERENCES pessoa (id);
+
+
+SET SQL_MODE = "";
+
+SET SQL_MODE = "STRICT_ALL_TABLES";
+
+SELECT COUNT(*) FROM pessoa;
+
+SELECT * FROM pessoa WHERE id = 16;
+
+SELECT count(*) FROM pessoa WHERE nome = "KARITA GOMES BEZERRA DOS SANTOS";
+
+UPDATE pessoa SET nome = "VICTOR SILVA OLIVEIRA" WHERE id = 16;
+
+SELECT * FROM pessoa WHERE id = 16;
+
+UPDATE pessoa SET nome = "VICTOR SILVA OLIVEIRA" WHERE id = 160;
+
+SELECT * FROM pessoa WHERE id = 160;
+
+UPDATE pessoa SET nome = "VICTOR SILVA OLIVEIRA" WHERE id = 1600;
+
+SELECT * FROM pessoa WHERE id = 1600;
+
+SELECT p.id, p.nome, ur.fk_pessoa, ur.id, ur.unidade FROM pessoa p
+INNER JOIN unidade_requisitante ur
+ON p.id = ur.fk_pessoa WHERE p.id = 16;
+
+SELECT p.id, p.nome, ur.fk_pessoa, ur.id, ur.unidade FROM pessoa p
+INNER JOIN unidade_requisitante ur
+ON p.id = ur.fk_pessoa WHERE p.id = 160;
+
+SELECT p.id, p.nome, ur.fk_pessoa, ur.id, ur.unidade FROM pessoa p
+INNER JOIN unidade_requisitante ur
+ON p.id = ur.fk_pessoa WHERE p.id = 1600;
+
